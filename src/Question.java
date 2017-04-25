@@ -1,13 +1,14 @@
+import java.util.Map;
 
 public class Question {
-    String qCompany = "Do you use LinkedIn?";//company usage
-    String qJob = "Do you use it to find jobs?";//for jobs
-    String qReference = "Do you use it for professional references?";//for reference
-    String qProfile = "Do you send potential employers your profile link?";//as profile
-    String qDislike = "Which feature of LinkedIn do you like the least";//dislike
+
+    String qCompany = "Do you use LinkedIn? ";
+    String qJob = "Do you use it to find jobs? ";
+    String qReference = "Do you use it for professional references? ";
+    String qProfile = "Do you send potential employers your profile link? ";
+    String qDislike = "Which feature of LinkedIn do you like the least ";
 
     public Question(){}
-
 
     public String getqCompany() {
         return qCompany;

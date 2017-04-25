@@ -1,20 +1,13 @@
 
 public class Answer {
-String compAnswer;
-String jobAnswer;
-String refAnswer;
-String profAnswer;
-String disAnswer;
+    String compAnswer;
+    String jobAnswer;
+    String refAnswer;
+    String profAnswer;
+    String disAnswer;
 
-public Answer(){}
-
-public Answer(String compAnswer, String jobAnswer, String refAnswer, String profAnswer, String disAnswer){
-    this.compAnswer = compAnswer;
-    this.jobAnswer = jobAnswer;
-    this.refAnswer = refAnswer;
-    this.profAnswer = profAnswer;
-    this.disAnswer = disAnswer;
-}
+    public Answer() {
+    }
 
     public String getCompAnswer() {
         return compAnswer;

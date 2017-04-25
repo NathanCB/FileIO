@@ -1,5 +1,6 @@
 import jodd.json.JsonParser;
 import jodd.json.JsonSerializer;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
@@ -8,31 +9,37 @@ import java.util.Scanner;
 
 public class Main {
 
-public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException {
+        Scanner scanner = new Scanner(System.in);
+        SurveyHandler surveyHandler = new SurveyHandler();
+        Answer answer = new Answer();
+        Question question = new Question();
+        SurveyHandler.readAndDisplayFile();
 
-    SurveyHandler.readAndDisplayFile();
+        System.out.println("Would you like to retake the survey?");
 
-    //if a survey file exist then ask to retake the survey or take the survey.
+        while (scanner.nextLine().equalsIgnoreCase("Y")) {
+            System.out.println(question.getqCompany());
+            answer.setCompAnswer(scanner.nextLine());
 
-    System.out.println("Would you like to retake the survey?");
-    Scanner scanner = new Scanner(System.in);
+            System.out.println(question.getqJob());
+            answer.setJobAnswer(scanner.nextLine());
 
-    SurveyHandler surveyHandler = new SurveyHandler();
+            System.out.println(question.getqReference());
+            answer.setRefAnswer(scanner.nextLine());
 
-    if(scanner.nextLine().equalsIgnoreCase("y")){
-        surveyHandler.askAndAnswer();
+            System.out.println(question.getqProfile());
+            answer.setProfAnswer(scanner.nextLine());
+
+            System.out.println(question.getqDislike());
+            answer.setDisAnswer(scanner.nextLine());
+        }
+
+        File f = new File("Main.json");
+        JsonSerializer s = new JsonSerializer();
+        String json = s.serialize(surveyHandler);//pass the object to be processed
+        FileWriter fw = new FileWriter(f);//pass the file name
+        fw.write(json);
+        fw.close();
     }
-    else{
-        System.exit(0);
-    }
-
-    File f = new File("Main.json");
-    JsonSerializer s = new JsonSerializer();
-    String json = s.serialize(surveyHandler);//pass the object to be processed
-    FileWriter fw = new FileWriter(f);//pass the file name
-    fw.write(json);
-    fw.close();
-
-    }
-
 }
